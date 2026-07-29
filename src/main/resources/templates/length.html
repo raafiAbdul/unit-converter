@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Home Page</title>
+    <title>Unit Converter</title>
     <style>
         .links {
             display: inline-block;
@@ -22,33 +22,48 @@
         a {
             text-decoration: none;
         }
+        .reset {
+            border: solid black 1px;
+            display: block;
+            width: fit-content;
+            padding: 10px;
+        }
     </style>
 </head>
 <body>
     <center>
         <div class="box">
-            <form action="/length" method="post">
+            <form action="/length" method="POST">
                 <h2>Unit Converter</h2>
                 <div class="links">
-                    <b><u><a>Length</a></u></b>
+                    <b><u><a href="/length">Length</a></u></b>
                     <a href="/weight">Weight</a>
                     <a href="/temp">Temperature</a>
                 </div>
-                <br>
-                Enter the length to convert
-                <br>
-                <input type="text" name="value">
-                <br><br>
-                Unit to convert from
-                <br>
-                <input type="text" name="convertFrom">
-                <br><br>
-                Unit to convert to
-                <br>
-                <input type="text" name="convertTo">
-                <br><br>
-                <button type="submit">Convert</button>
-                <br><br>
+                <div class="disappear" th:style="'display: ' + ${converterDisplay}">
+                    <br>
+                    Enter the length to convert
+                    <br>
+                    <input type="text" name="value">
+                    <br><br>
+                    Unit to convert from
+                    <br>
+                    <input type="text" name="convertFrom">
+                    <br><br>
+                    Unit to convert to
+                    <br>
+                    <input type="text" name="convertTo">
+                    <br><br>
+                    <button type="submit">Convert</button>
+                    <br><br>
+                </div>
+                <div class="answer" th:style="'display: ' + ${answerDisplay}">
+                    Result of your calculation
+                    <br>
+                    <p th:text="'20ft = 609cm'"></p>
+                    <br><br>
+                    <a href="/length" class="reset">Reset</a>
+                </div>
             </form>
         </div>
     </center>
