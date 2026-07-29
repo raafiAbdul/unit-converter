@@ -60,7 +60,7 @@
                 <div class="answer" th:style="'display: ' + ${answerDisplay}">
                     Result of your calculation
                     <br>
-                    <p th:text="'20ft = 609cm'"></p>
+                    <p th:text="${originalValue} + ' ' + ${unitConvertFrom} + ' = ' + ${finalAnswer} + ' ' + ${unitConvertTo}"></p>
                     <br><br>
                     <a href="/length" class="reset">Reset</a>
                 </div>
