@@ -1,11 +1,11 @@
 package com.example.unit_converter.services;
 
-public class InputValidatorService {
+public class GeneralHelperService {
     static String[] validWords = {"millimeter", "centimeter", "kilometer", "inch",
             "foot", "yard", "mile", "milligram", "gram",
             "kilogram", "ounce", "pound", "celsius", "farenheit",
             "kelvin"};
-    public static boolean inputValidator(String input) throws Exception {
+    public static boolean inputValidator(String input) {
         boolean isValid = false;
         for(String validWord : validWords) {
             if(input.toLowerCase().equals(validWord)) {
