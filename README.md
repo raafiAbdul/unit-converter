@@ -1,8 +1,8 @@
 # unit-converter
 
 Good day everyone, this is my take on the [unit converter](https://roadmap.sh/projects/unit-converter)
-project from [roadmap.sh](https://roadmap.sh). This unit converter doesn't cover that much
-units neither does it cover all types of measurements. I used regular Spring MVC for this
+project from [roadmap.sh](https://roadmap.sh). This unit converter doesn't cover that many
+units, neither does it cover all types of measurements. I used regular Spring MVC for this
 one. As for my template engine, I used Thymeleaf (not very proficient with it). Apologies in
 advance for the horrendous HTML code and I just realized I misspelled Fahrenheit 
 as "Farenheit" in my code...
@@ -27,7 +27,7 @@ cd unit-converter
 ```shell
 .\mvnw.cmd sprint-boot:run
 ```
-Or in mac/linux:
+Or in Mac/Linux:
 ```shell
 ./mvnw spring-boot:run
 ```
@@ -37,3 +37,8 @@ Or in mac/linux:
 1. Type in your inputs: ![home view](sample-image-1.png)
 2. And be presented with the following screen ![answer view](sample-image-2.png)
 3. In case of any invalid input, you are notified as such ![invalid input](sample-image-3.png)
+
+## Contributions
+A favorite quote of mine is "Never stop learning. Because when you stop learning, you stop living."
+So if you have any improvements you can recommend to my code, or you find that something
+is wrong, please don't hesitate to tell me or make a pull request, I'm very open!
