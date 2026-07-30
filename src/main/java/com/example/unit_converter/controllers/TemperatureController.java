@@ -13,16 +13,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.logging.Logger;
 
 @Controller
-public class LengthController {
+public class TemperatureController {
 
     private final GeneralHelperService ghs;
     private final ConverterService converterService;
-    private static final String VIEW_NAME = "weight";
-    private final Logger logger = Logger.getLogger(LengthController.class.getName());
+    private static final String VIEW_NAME = "temperature";
+    private final Logger logger = Logger.getLogger(WeightController.class.getName());
     private boolean enteredInvalidInput = false;
 
     @Autowired
-    public LengthController(GeneralHelperService ghs,
+    public TemperatureController(GeneralHelperService ghs,
                             @Qualifier(VIEW_NAME) ConverterService converterService) {
         this.ghs = ghs;
         this.converterService = converterService;

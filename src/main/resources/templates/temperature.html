@@ -1,10 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Unit Converter</title>
+    <style>
+        .links {
+            display: inline-block;
+            margin-right: 30px;
+            padding: 30px;
+        }
+        .box {
+            border: solid black 3px;
+            width: fit-content;
+            height: fit-content;
+            padding: 25px;
+        }
+        h2 {
+            border-bottom: solid black 5px;
+            padding-bottom: 30px;
+        }
+        a {
+            text-decoration: none;
+        }
+        .reset {
+            border: solid black 1px;
+            display: block;
+            width: fit-content;
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
+<center>
+    <div class="box">
+        <h2>Unit Converter</h2>
+        <div class="links">
+            <a href="/length">Length</a>
+            <a href="/weight">Weight</a>
+            <b><u><a href="/temp">Temperature</a></u></b>
+        </div>
+        <form action="/temperature" method="POST">
+            <div class="disappear" th:style="'display: ' + ${converterDisplay}">
+                <br>
+                Enter the length to convert
+                <br>
+                <input type="text" name="value">
+                <br><br>
+                Unit to convert from
+                <br>
+                <input type="text" name="convertFrom">
+                <br><br>
+                Unit to convert to
+                <br>
+                <input type="text" name="convertTo">
+                <br><br>
+                <button type="submit">Convert</button>
+                <br><br>
+            </div>
+            <div class="answer" th:style="'display: ' + ${answerDisplay}">
+                Result of your calculation
+                <br>
+                <p th:text="${originalValue} + ' ' + ${unitConvertFrom} + ' = ' + ${finalAnswer} + ' ' + ${unitConvertTo}"></p>
+                <br><br>
+                <a href="/temperature" class="reset">Reset</a>
+            </div>
+        </form>
+        <h3 th:text="${message}" style="color: red"></h3>
+    </div>
 
+    <p>Instructions: You have to type the units in their singular form with its correct spelling. It is
+        <br>
+        <b>NOT</b> case-sensitive. Example: miLLimeter, Yard, Farenheit, celSius, etc. Those will all work.</p>
+
+</center>
 </body>
 </html>

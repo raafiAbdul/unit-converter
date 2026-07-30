@@ -2,7 +2,7 @@ package com.example.unit_converter.services;
 
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("weight")
 public class WeightConverterService implements ConverterService{
 
     @Override
