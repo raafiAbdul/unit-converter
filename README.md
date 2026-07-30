@@ -14,7 +14,7 @@ as "Farenheit" in my code...
 - For temperature there is: Celsius, Fahrenheit, and Kelvin.
 - The app tells you if your input is invalid.
 - Uses HTML form to send the parameters.
-- Instruction is provided below the form box for proper format of inputs.
+- Instruction is provided below the form box for proper formatting of inputs.
 - The converted value will have at most 5 decimal places.
 
 ## Installation
