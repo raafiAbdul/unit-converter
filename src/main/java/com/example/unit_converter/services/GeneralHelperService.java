@@ -10,7 +10,7 @@ import java.util.Map;
 public class GeneralHelperService {
     private final String[][] validWords = {{"millimeter", "mm"}, {"centimeter", "cm"}, {"kilometer", "km"},
             {"inch", "in"}, {"foot", "ft"}, {"yard", "yd"}, {"mile", "mi"}, {"milligram", "mg"}, {"gram", "g"},
-            {"kilogram", "kg"}, {"ounce", "oz"}, {"pound", "lb"}, {"celsius", "C"}, {"farenheit", "F"},
+            {"kilogram", "kg"}, {"ounce", "oz"}, {"pound", "lb"}, {"celsius", "C"}, {"fahrenheit", "F"},
             {"kelvin", "K"}, {"meter", "m"}};
 
     private static Map<String, String> unitsMap = new HashMap<>();

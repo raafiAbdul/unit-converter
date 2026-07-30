@@ -8,7 +8,7 @@ public class TemperatureConverterService implements ConverterService {
     public double convertToBaseUnit(String convertFrom, double value) throws Exception {
         switch(convertFrom) {
             case "celsius" -> {return value;}
-            case "farenheit" -> value = (value - 32) * (5/9.0);
+            case "fahrenheit" -> value = (value - 32) * (5/9.0);
             case "kelvin" -> value = value - 273.15;
             default -> throw new Exception();
         }
