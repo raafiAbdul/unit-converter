@@ -37,13 +37,19 @@ public class GeneralHelperService {
         }
     }
 
-    public void viewSetter(Model model, boolean updatingToAnswer) {
+    public void viewSetter(Model model, boolean updatingToAnswer, boolean enteredInvalidInput) {
         if (updatingToAnswer) {
             model.addAttribute("converterDisplay", "none");
             model.addAttribute("answerDisplay", "block");
         } else {
             model.addAttribute("converterDisplay", "block");
             model.addAttribute("answerDisplay", "none");
+        }
+
+        if(enteredInvalidInput) {
+            model.addAttribute("message", "Invalid Input");
+        } else {
+            model.addAttribute("message", "");
         }
 
     }

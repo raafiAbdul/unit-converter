@@ -19,6 +19,7 @@ public class LengthController {
     private final ConverterService converterService;
     private static final String VIEW_NAME = "length";
     private final Logger logger = Logger.getLogger(LengthController.class.getName());
+    private boolean enteredInvalidInput = false;
 
     @Autowired
     public LengthController(GeneralHelperService ghs,
@@ -29,7 +30,7 @@ public class LengthController {
 
     @GetMapping("/" + VIEW_NAME)
     public String getLength(Model model) {
-        ghs.viewSetter(model, false);
+        ghs.viewSetter(model, false, enteredInvalidInput);
         return VIEW_NAME;
     }
 
@@ -49,11 +50,14 @@ public class LengthController {
             logger.warning("Values: " +
                     "[\"" + value + "\", \"" + convertFrom + "\", \"" + convertTo + "\"]" +
                     " not valid.");
+            enteredInvalidInput = true;
             return "redirect:/" + VIEW_NAME;
         }
 
+        // show answers
+        enteredInvalidInput = false;
         double finalAnswer = ghs.valueProcessor(convertFrom, convertTo, valueDouble, converterService);
-        ghs.viewSetter(model, true);
+        ghs.viewSetter(model, true, enteredInvalidInput);
         ghs.answerSetter(model, valueDouble, finalAnswer, convertTo, convertFrom);
 
         return VIEW_NAME;
