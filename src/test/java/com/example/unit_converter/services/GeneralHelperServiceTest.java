@@ -31,7 +31,7 @@ class GeneralHelperServiceTest {
     // testing valueProcessor
 
     @Test
-    void inchesToYards() {
+    void inchesToYards() throws Exception {
         double value = (65 / 39.3701) * 1.09361;
         double finalAnswer = Math.round(value * 100000.0) / 100000.0;
         assertEquals(finalAnswer, generalHelperService.valueProcessor("inch",
@@ -39,7 +39,7 @@ class GeneralHelperServiceTest {
     }
 
     @Test
-    void yardsToKilometers() {
+    void yardsToKilometers() throws Exception {
         double value = (65 / 1.09361) / 1000.0;
         double finalAnswer = Math.round(value * 100000.0) / 100000.0;
         assertEquals(finalAnswer, generalHelperService.valueProcessor("yard",

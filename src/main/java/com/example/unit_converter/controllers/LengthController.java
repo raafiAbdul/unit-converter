@@ -17,7 +17,7 @@ public class LengthController {
 
     private final GeneralHelperService ghs;
     private final ConverterService converterService;
-    private static final String VIEW_NAME = "weight";
+    private static final String VIEW_NAME = "length";
     private final Logger logger = Logger.getLogger(LengthController.class.getName());
     private boolean enteredInvalidInput = false;
 
@@ -40,12 +40,13 @@ public class LengthController {
                              @RequestParam String convertTo,
                              Model model) {
 
-        double valueDouble;
+        double valueDouble, finalAnswer;
 
         // validate everything
         try {
             valueDouble = ghs.checkIfValidDouble(value);
             ghs.inputValidator(convertFrom, convertTo);
+            finalAnswer = ghs.valueProcessor(convertFrom, convertTo, valueDouble, converterService);
         } catch(Exception e) {
             logger.warning("Values: " +
                     "[\"" + value + "\", \"" + convertFrom + "\", \"" + convertTo + "\"]" +
@@ -56,7 +57,6 @@ public class LengthController {
 
         // show answers
         enteredInvalidInput = false;
-        double finalAnswer = ghs.valueProcessor(convertFrom, convertTo, valueDouble, converterService);
         ghs.viewSetter(model, true, enteredInvalidInput);
         ghs.answerSetter(model, valueDouble, finalAnswer, convertTo, convertFrom);
 

@@ -23,7 +23,7 @@ public class GeneralHelperService {
     }
 
     public double valueProcessor(String convertFrom, String convertTo,
-                                 double value, ConverterService converterService) {
+                                 double value, ConverterService converterService) throws Exception {
         double baseUnit = converterService.convertToBaseUnit(convertFrom.toLowerCase(), value);
         double finalAnswer = converterService.convertFromBaseUnit(convertTo.toLowerCase(), baseUnit);
         return Math.round(finalAnswer * 100000.0) / 100000.0;

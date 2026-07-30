@@ -6,25 +6,27 @@ import org.springframework.stereotype.Service;
 public class WeightConverterService implements ConverterService{
 
     @Override
-    public double convertToBaseUnit(String convertFrom, double value) {
+    public double convertToBaseUnit(String convertFrom, double value) throws Exception {
         switch(convertFrom) {
             case "kilogram" -> {return value;}
             case "milligram" -> value = value * 1e6;
             case "gram" -> value = value * 1e3;
             case "pound" -> value = value / 2.20462;
             case "ounce" -> value = value / 35.274;
+            default -> throw new Exception();
         }
         return value;
     }
 
     @Override
-    public double convertFromBaseUnit(String convertTo, double value) {
+    public double convertFromBaseUnit(String convertTo, double value) throws Exception {
         switch (convertTo) {
             case "kilogram" -> {return value;}
             case "milligram" -> value = value / 1e6;
             case "gram" -> value = value / 1e3;
             case "pound" -> value = value * 2.20462;
             case "ounce" -> value = value * 35.274;
+            default -> throw new Exception();
         }
         return value;
     }

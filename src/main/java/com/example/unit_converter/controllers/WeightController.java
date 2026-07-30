@@ -29,23 +29,24 @@ public class WeightController {
     }
 
     @GetMapping("/" + VIEW_NAME)
-    public String getLength(Model model) {
+    public String getWeight(Model model) {
         ghs.viewSetter(model, false, enteredInvalidInput);
         return VIEW_NAME;
     }
 
     @PostMapping("/" + VIEW_NAME)
-    public String postLength(@RequestParam String value,
+    public String postWeight(@RequestParam String value,
                              @RequestParam String convertFrom,
                              @RequestParam String convertTo,
                              Model model) {
 
-        double valueDouble;
+        double valueDouble, finalAnswer;
 
         // validate everything
         try {
             valueDouble = ghs.checkIfValidDouble(value);
             ghs.inputValidator(convertFrom, convertTo);
+            finalAnswer = ghs.valueProcessor(convertFrom, convertTo, valueDouble, converterService);
         } catch(Exception e) {
             logger.warning("Values: " +
                     "[\"" + value + "\", \"" + convertFrom + "\", \"" + convertTo + "\"]" +
@@ -56,7 +57,6 @@ public class WeightController {
 
         // show answers
         enteredInvalidInput = false;
-        double finalAnswer = ghs.valueProcessor(convertFrom, convertTo, valueDouble, converterService);
         ghs.viewSetter(model, true, enteredInvalidInput);
         ghs.answerSetter(model, valueDouble, finalAnswer, convertTo, convertFrom);
 
