@@ -33,13 +33,13 @@
 <body>
     <center>
         <div class="box">
+            <h2>Unit Converter</h2>
+            <div class="links">
+                <b><u><a href="/length">Length</a></u></b>
+                <a href="/weight">Weight</a>
+                <a href="/temp">Temperature</a>
+            </div>
             <form action="/length" method="POST">
-                <h2>Unit Converter</h2>
-                <div class="links">
-                    <b><u><a href="/length">Length</a></u></b>
-                    <a href="/weight">Weight</a>
-                    <a href="/temp">Temperature</a>
-                </div>
                 <div class="disappear" th:style="'display: ' + ${converterDisplay}">
                     <br>
                     Enter the length to convert

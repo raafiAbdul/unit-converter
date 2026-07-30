@@ -10,36 +10,52 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.logging.Logger;
+
 @Controller
 public class LengthController {
 
-    private static final String viewName = "length";
     private final GeneralHelperService ghs;
+    private final ConverterService converterService;
+    private static final String VIEW_NAME = "length";
+    private final Logger logger = Logger.getLogger(LengthController.class.getName());
 
     @Autowired
-    public LengthController(GeneralHelperService ghs) {
+    public LengthController(GeneralHelperService ghs,
+                            @Qualifier(VIEW_NAME) ConverterService converterService) {
         this.ghs = ghs;
+        this.converterService = converterService;
     }
 
-    @GetMapping("/" + viewName)
+    @GetMapping("/" + VIEW_NAME)
     public String getLength(Model model) {
         ghs.viewSetter(model, false);
-        return viewName;
+        return VIEW_NAME;
     }
 
-    @PostMapping("/" + viewName)
-    public String postLength(@RequestParam double value,
+    @PostMapping("/" + VIEW_NAME)
+    public String postLength(@RequestParam String value,
                              @RequestParam String convertFrom,
                              @RequestParam String convertTo,
-                             Model model, @Qualifier(viewName)ConverterService converterService) {
+                             Model model) {
 
-        if (ghs.inputValidator(convertTo, convertFrom)) {
-            return "redirect:/" + viewName;
+        double valueDouble;
+
+        // validate everything
+        try {
+            valueDouble = ghs.checkIfValidDouble(value);
+            ghs.inputValidator(convertFrom, convertTo);
+        } catch(Exception e) {
+            logger.warning("Values: " +
+                    "[\"" + value + "\", \"" + convertFrom + "\", \"" + convertTo + "\"]" +
+                    " not valid.");
+            return "redirect:/" + VIEW_NAME;
         }
-        double finalAnswer = ghs.valueProcessor(convertTo, convertFrom, value, converterService);
-        ghs.viewSetter(model, true);
-        ghs.answerSetter(model, value, finalAnswer, convertTo, convertFrom);
 
-        return "/" + viewName;
+        double finalAnswer = ghs.valueProcessor(convertFrom, convertTo, valueDouble, converterService);
+        ghs.viewSetter(model, true);
+        ghs.answerSetter(model, valueDouble, finalAnswer, convertTo, convertFrom);
+
+        return VIEW_NAME;
     }
 }
