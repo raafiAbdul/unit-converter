@@ -4,8 +4,7 @@ Good day everyone, this is my take on the [unit converter](https://roadmap.sh/pr
 project from [roadmap.sh](https://roadmap.sh). This unit converter doesn't cover that many
 units, neither does it cover all types of measurements. I used regular Spring MVC for this
 one. As for my template engine, I used Thymeleaf (not very proficient with it). Apologies in
-advance for the horrendous HTML code and I just realized I misspelled Fahrenheit 
-as "Farenheit" in my code...
+advance for the horrendous HTML code.
 
 ## Features
 - Covers three different types of measurements; length, weight, and temperature.
